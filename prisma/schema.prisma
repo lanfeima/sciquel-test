@@ -2,8 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
-}
+  provider = "prisma-client-js"}
 
 datasource db {
 
@@ -14,10 +13,13 @@ datasource db {
 }
 
 model Comment {
-  id        String   @id @default(auto()) // MongoDB will automatically generate an ObjectID
-  content   String   // The text content of the comment
-  authorId  String   // Reference to the User model if comments are associated with users
-  createdAt DateTime @default(now()) // Automatically set to current date and time
-  updatedAt DateTime @updatedAt // Automatically updated to current date and time when the record is updated
+  model Comment {
+    id        String   @id @default(auto()) // MongoDB will automatically generate an ObjectID
+    name      String   // The name of the person who made the comment
+    email     String   // The email address of the person who made the comment
+    content   String   // The text content of the comment
+    createdAt DateTime @default(now()) // Automatically set to the current date and time when the comment is created
+    updatedAt DateTime @updatedAt // Automatically set to the current date and time when the comment is updated
+  }
 }
 
