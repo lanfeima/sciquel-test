@@ -12,3 +12,12 @@ datasource db {
   url      = env("DATABASE_URL")
 
 }
+
+model Comment {
+  id        String   @id @default(auto()) // MongoDB will automatically generate an ObjectID
+  content   String   // The text content of the comment
+  authorId  String   // Reference to the User model if comments are associated with users
+  createdAt DateTime @default(now()) // Automatically set to current date and time
+  updatedAt DateTime @updatedAt // Automatically updated to current date and time when the record is updated
+}
+
